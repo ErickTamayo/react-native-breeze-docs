@@ -1,16 +1,27 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* h1,
+h2,
+h3,
+h4 {
+  @apply font-bold;
+  @apply text-gray-900;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1 {
+  @apply text-3xl;
 }
 
-* {
-  box-sizing: border-box;
+h2 {
+  @apply text-2xl;
 }
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+} */

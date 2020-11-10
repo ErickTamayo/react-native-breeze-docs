@@ -1,0 +1,54 @@
+---
+title: Getting Started
+---
+
+import Note from "../../src/components/note";
+
+# Getting Started
+
+React Native Breeze provides an easy way to use React Native Styles the same as you would use [Tailwind CSS](https://tailwindcss.com/). In fact, this library is pretty much a port from Tailwind for React Native.
+
+Using the same principle of Tailwind, Breeze provides a low-level named styles that let you build your custom designs very fast. Breeze follows closely the same syntax as Tailwind. If you come from Tailwind, you will feel like home with Breeze in React Native.
+
+<Note>
+  In this version of Breeze, only React Function Components are supported.
+  Breeze uses a hook to be able to use variants and react to changes
+  accordingly.
+</Note>
+
+## Installation
+
+```shell simple
+npm install react-native-breeze
+```
+
+If you are using **yarn**
+
+```shell simple
+yarn add react-native-breeze
+```
+
+### Using Expo
+
+Add the Breeze babel plugin to the `babel.config.js` file:
+
+```js filename=babel.config.js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ["babel-preset-expo"],
+    plugins: ["react-native-breeze/plugin"],
+  };
+};
+```
+
+### Using React Native
+
+Add the Breeze babel plugin to the `babel.config.js` file:
+
+```js filename=babel.config.js
+module.exports = {
+  presets: ["module:metro-react-native-babel-preset"],
+  plugins: ["react-native-breeze/plugin"],
+};
+```
