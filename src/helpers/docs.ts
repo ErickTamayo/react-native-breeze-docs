@@ -33,46 +33,18 @@ export interface MarkdownDirectoryTree extends DirectoryTree {
   expanded: boolean;
   position: number;
   content: string;
-  navigation: Navigation;
   children: MarkdownDirectoryTree[];
 }
 
 export const getDocsTreeChildren = () => {
   const tree = dirTree("docs", { extensions: /\.mdx?$/ });
 
-  const traverse = (
-    tree: MarkdownDirectoryTree,
-    navigation: Navigation
-  ): MarkdownDirectoryTree => {
-    const children = (tree.children || []).map((child, index) => {
-      const previousTree = tree.children[index - 1];
-      const nextTree = tree.children[index + 1];
-
-      let previous = null;
-      let next = null;
-
-      if (
-        previousTree?.type === "file" &&
-        tree.name !== previousTree.name.replace(/\.mdx?$/, "")
-      ) {
-        const { title } = getDocByPath(previousTree.path);
-        const slug = previousTree.path.replace(/src\/pages\/|\.mdx?/gi, "");
-        previous = { title, slug };
-      }
-
-      if (
-        nextTree?.type === "file" &&
-        tree.name !== nextTree.name.replace(/\.mdx?$/, "")
-      ) {
-        const { title } = getDocByPath(nextTree.path);
-        const slug = nextTree.path.replace(/src\/pages\/|\.mdx?/gi, "");
-        next = { title, slug };
-      }
-
-      const navigation = { previous, next };
-
-      return traverse(child as MarkdownDirectoryTree, navigation);
+  const traverse = (tree: MarkdownDirectoryTree): MarkdownDirectoryTree => {
+    let children = (tree.children || []).map((child, index) => {
+      return traverse(child as MarkdownDirectoryTree);
     });
+
+    children.sort((a, b) => a.position - b.position);
 
     const meta = children.find(
       (child) => child.name.replace(/\.mdx?$/, "") === tree.name
@@ -98,10 +70,7 @@ export const getDocsTreeChildren = () => {
       return {
         ...tree,
         ...getDocByPath(tree.path),
-        navigation,
         slug,
-        expanded,
-        position,
         children: childrenWithoutMeta,
       };
     }
@@ -109,10 +78,7 @@ export const getDocsTreeChildren = () => {
     return { ...tree, expanded, position, children: childrenWithoutMeta };
   };
 
-  const traversed = traverse(tree as MarkdownDirectoryTree, {
-    previous: null,
-    next: null,
-  });
+  const traversed = traverse(tree as MarkdownDirectoryTree);
 
   return traversed;
 };
@@ -141,19 +107,24 @@ export const getTocFromSlug = (slug: string) => {
 };
 
 export const getNavigationFromSlug = (slug: string): Navigation => {
-  const tree = getDocsTreeChildren();
+  const slugs = getDocsSlugs().map((s) => s.join("/"));
 
-  let navigation = { previous: null, next: null };
+  let navigation: Navigation = { previous: null, next: null };
 
-  const traverse = (tree: MarkdownDirectoryTree) => {
-    if (tree.slug === `docs/${slug}`) {
-      navigation = tree.navigation;
-    }
+  const currentSlugIndex = slugs.findIndex((s) => s === slug);
 
-    tree.children.forEach((child) => traverse(child));
-  };
+  const previousSlug = slugs[currentSlugIndex - 1];
+  const nextSlug = slugs[currentSlugIndex + 1];
 
-  traverse(tree);
+  if (previousSlug) {
+    const { title } = getDocByPath(`docs/${previousSlug}.mdx`);
+    navigation.previous = { title, slug: `docs/${previousSlug}` };
+  }
+
+  if (nextSlug) {
+    const { title } = getDocByPath(`docs/${nextSlug}.mdx`);
+    navigation.next = { title, slug: `docs/${nextSlug}` };
+  }
 
   return navigation;
 };

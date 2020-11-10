@@ -20,7 +20,7 @@ const Header = () => {
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="w-full px-2 lg:px-6">
               <label htmlFor="search" className="sr-only">
-                Search projects
+                Search
               </label>
               <div className="relative text-gray-400 focus-within:text-gray-400">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -39,8 +39,9 @@ const Header = () => {
                 <input
                   id="search"
                   className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-400 bg-opacity-25 text-gray-400 placeholder-gray-400 focus:outline-none focus:bg-white focus:placeholder-gray-400 focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out"
-                  placeholder="Search"
+                  placeholder="Search coming soon"
                   type="search"
+                  disabled
                 />
               </div>
             </div>

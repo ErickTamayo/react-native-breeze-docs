@@ -35,7 +35,7 @@ const FooterNavigation: FunctionComponent<FooterNavigationProps> = ({
                 </svg>
                 <div className="flex flex-col ml-4">
                   <span>Previous</span>
-                  <a>Wathever</a>
+                  <span className="text-lg">{previous.title}</span>
                 </div>
               </div>
             </a>
@@ -50,7 +50,7 @@ const FooterNavigation: FunctionComponent<FooterNavigationProps> = ({
               <div className="flex justify-end items-center border rounded p-4">
                 <div className="flex flex-col text-right">
                   <span>Next</span>
-                  <a>{next.title}</a>
+                  <span className="text-lg">{next.title}</span>
                 </div>
                 <svg
                   aria-hidden="true"

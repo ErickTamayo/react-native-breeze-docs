@@ -18,8 +18,6 @@ const Layout: FunctionComponent<LayoutProps> = ({
   toc,
   navigation,
 }) => {
-  console.log({ navigation });
-
   return (
     <>
       <div className="fixed top-0 left-0 w-1/2 h-full bg-white"></div>
