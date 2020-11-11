@@ -10,7 +10,7 @@ export type LeftSidebarProps = {
 const LeftSidebar: FunctionComponent<LeftSidebarProps> = ({ docs }) => {
   return (
     <div className="bg-white w-full md:w-64 md:border-r md:border-gray-200">
-      <div className="px-4 py-8">
+      <div className="px-4 py-8 md:fixed w-64">
         {docs &&
           (docs.children || []).map((doc) => {
             return doc.type === "directory" ? (

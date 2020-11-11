@@ -9,17 +9,23 @@ export type RightSidebarProps = {
 const RightSidebar: FunctionComponent<RightSidebarProps> = ({ toc }) => {
   return (
     <div className="w-64 hidden lg:block p-4">
-      <ul className="text-gray-500">
-        {toc
-          .filter(({ type }) => ["h1", "h2"].includes(type))
-          .map(({ heading, type }) => (
-            <a key={heading} href={`#${paramCase(heading)}`}>
-              <li className={`text-sm pt-1 ${type === "h2" ? "pl-4" : ""}`}>
-                {heading}
-              </li>
-            </a>
-          ))}
-      </ul>
+      <div className="md:fixed md:w-64">
+        <ul className="text-gray-600">
+          {toc
+            .filter(({ type }) => ["h1", "h2"].includes(type))
+            .map(({ heading, type }) => (
+              <a key={heading} href={`#${paramCase(heading)}`}>
+                <li
+                  className={`text-sm pt-1 ${
+                    type === "h2" ? "pl-2 text-gray-500" : ""
+                  }`}
+                >
+                  {heading}
+                </li>
+              </a>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };

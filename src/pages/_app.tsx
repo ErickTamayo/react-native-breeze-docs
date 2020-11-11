@@ -7,6 +7,7 @@ import {
   Heading1,
   Heading2,
   Heading3,
+  InlineCode,
   Paragraph,
 } from "../components/mdx";
 
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps, router }) {
       p: Paragraph,
       a: Anchor,
       code: CodeBlock,
+      inlineCode: InlineCode,
     }),
     []
   );

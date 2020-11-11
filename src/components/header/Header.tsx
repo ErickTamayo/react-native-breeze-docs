@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import HeaderBrand from "../../images/header-brand.svg";
 import HeaderLogo from "../../images/header-logo.svg";
 const Header = () => {
-  const [menuIsVisible, setMenuIsVisible] = useState(true);
+  const [menuIsVisible, setMenuIsVisible] = useState(false);
 
   return (
-    <nav className="flex-shrink-0 bg-white border-b border-gray-300">
+    <nav className="md:fixed md:w-full flex-shrink-0 bg-white border-b border-gray-300 z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center px-2 lg:px-0 xl:w-64">

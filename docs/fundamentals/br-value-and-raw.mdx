@@ -1,0 +1,134 @@
+---
+title: The br function
+position: 3
+---
+
+import Note from "../../src/components/note";
+
+# br
+
+The `br` function parses the Breeze string to its corresponding React Native styles. Then the babel plugin does the heavy lifting for you setting up the hook and event listeners to be able to use pseudo selectors such as `focus:` or `hover:`
+
+```jsx
+import { View } from "react-native";
+import { br } from "react-native-breeze";
+
+const Component = () => {
+  return <View style={br`bg-red-500`} />;
+};
+```
+
+Transpiles into
+
+```jsx
+import { View } from "react-native";
+import { useBreeze } from "react-native-breeze";
+
+const Component = () => {
+  // Hook introduced by the react-native-breeze/plugin
+  const breeze = useBreeze();
+
+  return <View style={breeze.parse("bg-red-500")} />;
+};
+```
+
+<!-- prettier-ignore -->
+<Note>
+
+If you have pseudo directive such as `focus:` or `hover:`, the `onFocus`, `onBlur`, `onMouseEnter` and `onMouseLeave` will be automatically attached to the component. This will **not** interfere with your regular usage of these props in the component.
+
+</Note>
+
+
+Sometimes we need the to apply styles to regular components with concrete styles, instead of having to abide by the Rule of React Hooks. For these cases, you can use `br.raw` and `br.value`
+
+## br.raw
+
+`br.raw` returns the style value w/o inserting any hook:
+
+```jsx
+import { View } from "react-native";
+import { br } from "react-native-breeze";
+
+const Component = () => {
+  return <View style={br.raw`bg-red-500`} />;
+};
+```
+
+Transpiles into
+
+```jsx
+import { View } from "react-native";
+
+const Component = () => {
+  return <View style={{ backgroundColor: "#f56565" }} />;
+};
+```
+
+<!-- prettier-ignore -->
+<Note>
+
+Keep in mind that using `br.raw`, Breeze will not be able to detect the changes of the component such as `focus:`, `hover:` or any other dynamic variant.
+
+</Note>
+
+
+## br.value
+
+`br.value` returns the value of the style instead of the object, this is heplful if you need the value of a color or spacing:
+
+```js
+// this is equivalent to
+// const value = "#ffffff"
+const value = br.value`bg-white`;
+```
+
+## Example
+
+Imagine we are using React Navigation library and we need to stylize a Stack.Screen component, this would be the regular way to do it:
+
+```jsx
+function StackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "My home",
+          headerStyle: {
+            backgroundColor: "#ed8936",
+          },
+          headerTintColor: "#ffffff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+```
+
+Using Breeze, we can re-write the previous code like this:
+
+```jsx
+import { br } from "react-native-breeze";
+
+function StackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "My home",
+          headerStyle: br.raw`bg-orange-500`,
+          headerTintColor: br.value`text-white`,
+          headerTitleStyle: br.raw`font-bold`,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+```

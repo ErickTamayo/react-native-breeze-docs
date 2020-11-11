@@ -4,3 +4,4 @@ export { default as Heading3 } from "./Heading3";
 export { default as Paragraph } from "./Paragraph";
 export { default as Anchor } from "./Anchor";
 export { default as CodeBlock } from "./CodeBlock";
+export { default as InlineCode } from "./InlineCode";

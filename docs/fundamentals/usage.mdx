@@ -5,4 +5,104 @@ position: 1
 
 # Usage
 
+To use Breeze, all you need to do is import the `br` function:
+
+<!-- prettier-ignore -->
+```jsx
+import React from "react";
+import { View } from "react-native";
+import { br } from "react-native-breeze";
+
+export default function Component() {
+  return (
+    <View style={br`flex justify-center items-center`}>
+      {/* ... */}
+    </View>
+  );
+}
+```
+
+## Usage with regular React Native styles
+
+Breeze gives you the flexibility of working directly along with React Native styles, this is helpful when you are using the [Animated](https://reactnative.dev/docs/animated) library or even [React Native Reanimated](https://github.com/software-mansion/react-native-reanimated)
+
+<!-- prettier-ignore -->
+```jsx
+import React from "react";
+import { View } from "react-native";
+import { br } from "react-native-breeze";
+
+export default function Component() {
+  return (
+    <View style={[br`bg-red-500`, { opacity: 0.5 }]}>
+      {/* ... */}
+    </View>
+  );
+}
+```
+
 ## Usage with Lists
+
+React Native Breeze uses a custom hook to be able to determine things such as screen changes or orientation. You can learn more in the [next section](/docs/fundamentals/how-breeze-works).
+
+This means that for using Breeze, you must subscribe to the same [rules of React Hooks](https://reactjs.org/docs/hooks-rules.html).
+
+Something like the following will _fail_ when using Breeze:
+
+```jsx
+import React from "react";
+import { View, Text } from "react-native";
+import { br } from "react-native-breeze";
+
+const List = () => {
+  const renderItem = ({ item }) => (
+    // The babel plugin will create a hook here
+    // This will fail to comply with the Rules of Hooks!
+
+    // const breeze = useBreeze(); ❌
+
+    <View style={br`bg-gray-500`}>
+      <Text style={br`text-lg`}>{item.title}</Text>
+    </View>
+  );
+
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+    />
+  );
+};
+```
+
+Instead, you should create a Function Component that is called by the `renderItem` function:
+
+```jsx
+import React from "react";
+import { View, Text } from "react-native";
+import { br } from "react-native-breeze";
+
+const Item = ({ item }) => {
+  // The babel plugin will create a hook here
+  // const breeze = useBreeze(); ✅
+
+  return (
+    <View style={br`bg-gray-500`}>
+      <Text style={br`text-lg`}>{item.title}</Text>
+    </View>
+  );
+};
+
+const List = () => {
+  const renderItem = ({ item }) => <Item item={item} />;
+
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+    />
+  );
+};
+```

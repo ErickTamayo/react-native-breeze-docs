@@ -24,7 +24,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
       <div className="fixed top-0 right-0 w-1/2 h-full bg-gray-50"></div>
       <div className="relative min-h-screen flex flex-col">
         <Header />
-        <div className="flex w-full max-w-7xl mx-auto xl:px-8 flex-grow">
+        <div className="flex w-full max-w-7xl mx-auto xl:px-8 flex-grow md:pt-16">
           <div className="flex flex-col md:flex-row flex-1 flex-grow">
             <LeftSidebar docs={docs} />
             <div className="flex-1 bg-white md:border-r md:border-gray-200 px-4 py-4 lg:px-8 max-w-3xl h-full">
