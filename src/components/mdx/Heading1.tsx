@@ -9,9 +9,9 @@ const Heading1: FunctionComponent<PropsWithChildren<{}>> = ({
 
   return (
     <div className="relative">
-      <div id={link} className="absolute -m-16 invisible" />
+      <div id={link} className="absolute -m-20 invisible" />
       <h1
-        className="text-gray-700 hover:text-gray-900 text-3xl font-bold mt-6 border-l-4 pl-2 border-blue-400 mb-4"
+        className="text-gray-700 hover:text-gray-900 text-3xl font-bold border-l-4 pl-2 border-blue-400 mt-12 mb-6"
         {...rest}
       >
         <a href={`#${link}`}>{children}</a>

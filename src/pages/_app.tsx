@@ -9,6 +9,12 @@ import {
   Heading3,
   InlineCode,
   Paragraph,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
 } from "../components/mdx";
 
 function MyApp({ Component, pageProps, router }) {
@@ -23,6 +29,12 @@ function MyApp({ Component, pageProps, router }) {
       a: Anchor,
       code: CodeBlock,
       inlineCode: InlineCode,
+      table: Table,
+      thead: Thead,
+      tbody: Tbody,
+      tr: Tr,
+      td: Td,
+      th: Th,
     }),
     []
   );

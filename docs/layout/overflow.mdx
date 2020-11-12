@@ -1,0 +1,87 @@
+---
+title: Overflow
+position: 1
+---
+
+import CodeBlockHeader from "../../src/components/code-block-header";
+
+# Overflow
+
+Utilities for controlling the overflow of a Component.
+
+[Overflow](https://reactnative.dev/docs/layout-props#overflow) controls how the children are measured and displayed.
+
+| Style            | Properties                |
+| :--------------- | :------------------------ |
+| overflow-hidden  | `{ overflow: 'hidden' }`  |
+| overflow-visible | `{ overflow: 'visible' }` |
+| overflow-scroll  | `{ overflow: 'scroll' }`  |
+
+## Hidden
+
+Use `overflow-hidden` to clip the content that is inside a Component.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="overflow-hidden mx-2 w-64 h-16 bg-gray-300 p-1">
+    Bacon ipsum dolor amet kevin tongue sausage, ball tip rump capicola meatloaf
+    swine bresaola.
+  </div>
+</div>
+
+```jsx simple
+<View style={br`overlfow-hidden w-64 h-16 ...`}>
+  <Text>Bacon ipsum dolor amet kevin...</Text>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Visible
+
+Use `overflow-visible` to prevent the content that is inside a Component from being clipped.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="overflow-visible mx-2 w-64 h-16 bg-gray-300 p-1">
+    Bacon ipsum dolor amet kevin tongue sausage, ball tip rump capicola meatloaf
+    swine bresaola.
+  </div>
+</div>
+
+```jsx simple
+<View style={br`overlfow-visible w-64 h-16 ...`}>
+  <Text>Bacon ipsum dolor amet kevin...</Text>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Scroll
+
+Use `overflow-scroll` makes the container Component scrollable if the contents are bigger than the container.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="overflow-scroll mx-2 w-64 h-16 bg-gray-300 p-1">
+    Bacon ipsum dolor amet kevin tongue sausage, ball tip rump capicola meatloaf
+    swine bresaola.
+  </div>
+</div>
+
+```jsx simple
+<View style={br`overlfow-scroll w-64 h-16 ...`}>
+  <Text>Bacon ipsum dolor amet kevin...</Text>
+</View>
+```
+
+</CodeBlockHeader>
+

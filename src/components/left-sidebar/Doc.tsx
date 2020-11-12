@@ -13,7 +13,7 @@ const Document: FunctionComponent<DocumentProps> = ({ document }) => {
   const isActive = asPath === `/${slug}`;
 
   return (
-    <Link href={`/${slug}`}>
+    <Link href={`/${slug}`} prefetch>
       <a
         suppressHydrationWarning
         className={`px-4 w-full flex items-center py-1 text-sm leading-5 font-medium  rounded-md hover:text-gray-900 focus:outline-none transition ease-in-out duration-150 ${

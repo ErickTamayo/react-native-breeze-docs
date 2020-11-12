@@ -1,4 +1,114 @@
 ---
 title: Variants
-position: 4
+position: 5
 ---
+
+import Note from "../../src/components/note";
+
+# Variants
+
+As Breeze uses a responsive design approach, similarly, you can use the built-in variants to apply specific styles given one or multiple conditions.
+
+### Platform
+
+Adding `ios:`, `android:`, `macos:`, `windows:`, `web:`, or `native:` prefix, only applies that style to that specific platform.
+
+```jsx
+// This will apply red background to iOS platforms
+// and green to every other platform
+
+<View style={br`bg-green-500 ios:bg-red-500`} />
+```
+
+<!-- prettier-ignore -->
+<Note>
+
+The `native:` variant is the equivalent to `ios:` and `android:` variants together. This is specially useful if you need to apply a style of devices only.
+
+</Note>
+
+
+### Orientation
+
+Adding `landscape:` or `portrait:` prefix, will apply styles when the devices is in that orientation:
+
+```jsx
+// This will apply red background to iOS platforms
+// and green to every other platform
+
+<View style={br`landscape:w-16 portrait:w-32`} />
+```
+
+<!-- prettier-ignore -->
+<Note>
+
+The orientation variant only works for iOS or Android devices, but you can set a default for non devices like the following:
+
+`` br`w-8 landscape:w-16 portrait:w-32` ``
+
+</Note>
+
+
+### Hover
+
+You can add the `hover:` prefix to only apply a style on hover
+
+```jsx
+<View style={br`bg-indigo-500 hover:bg-indigo-600`} />
+```
+
+<!-- prettier-ignore -->
+<Note>
+
+This only works when using [React Native Web](https://github.com/necolas/react-native-web)
+
+</Note>
+
+
+### Focus
+
+You can add the `focus:` prefix to only apply a style on hover
+
+```jsx
+<TextInput style={br`bg-gray-200 focus:bg-white`} />
+```
+
+<!-- prettier-ignore -->
+<Note>
+
+This only works for `<TextInput />` components
+
+</Note>
+
+
+## Variant Interactions
+
+You can combine multiple variants to be able to apply styles under certain conditions. The following convention gives you an idea what you can do:
+
+`platform:media:variant:style`
+
+** This means you can use the following combinations: **
+
+Apply `bg-gray-500` when platform is `ios`, screen is `md`, and `hover`:
+
+```jsx simple
+<View style={br`ios:sm:hover:bg-gray-500`} />
+```
+
+Apply `bg-gray-500` when platform is `ios` and screen is `md`:
+
+```jsx simple
+<View style={br`ios:sm:bg-gray-500`} />
+```
+
+Apply `bg-gray-500` when platform is `ios` and `hover`:
+
+```jsx simple
+<View style={br`ios:hover:bg-gray-500`} />
+```
+
+Apply `bg-gray-500` screen is `md` and on `hover`:
+
+```jsx simple
+<View style={br`md:hover:bg-gray-500`} />
+```

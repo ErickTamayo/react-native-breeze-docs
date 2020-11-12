@@ -1,4 +1,34 @@
 ---
 title: Responsive Design
-position: 5
+position: 4
 ---
+
+# Responsive Design
+
+Every Style in Breeze can be applied conditionally at different widths. This is mostly useful when using [React Native Web](https://github.com/necolas/react-native-web) to build responsive interfaces without extra effort.
+
+We currently have the same defaults as Tailwind.
+
+```js filename=breeze.config.js
+// Breakpoints
+// Points when using devices (iOS, Android).
+// Pixels when using React Native Web
+
+{
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+}
+```
+
+Following the same principles of Tailwind, you add the utility to take a certain effect at certain breakpoint from default to the biggest width:
+
+```jsx
+// Default 16 width, 32 on medium screens,
+// and 48 on large screens
+
+<View style={br`w-16 md:w-32 lg:2-48`} />
+```
+
+If you want to learn more about responsive design, you can take a look at the [Tailwind Documentation](https://tailwindcss.com/docs/responsive-design)

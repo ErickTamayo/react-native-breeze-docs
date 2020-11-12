@@ -1,0 +1,80 @@
+---
+title: Display
+position: 0
+---
+
+import CodeBlockHeader from "../../src/components/code-block-header";
+import Note from "../../src/components/note";
+
+# Display
+
+Utilities for controlling the display of a Component. `flex` is the default.
+
+| Style  | Properties            |
+| :----- | :-------------------- |
+| hidden | `{ display: 'none' }` |
+| flex   | `{ display: 'flex' }` |
+
+## Hidden
+
+Use `hidden` to hide a component from the layout.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="hidden items-center justify-center mx-2 w-10 h-10 bg-gray-300">
+    1
+  </div>
+  <div className="flex items-center justify-center mx-2 w-10 h-10 bg-gray-300">
+    2
+  </div>
+  <div className="flex items-center justify-center mx-2 w-10 h-10 bg-gray-300">
+    3
+  </div>
+</div>
+
+```jsx simple
+<View style={br`hidden w-10 h-10`}> {/* 1 */} </View>
+<View style={br`w-10 h-10`}> {/* 2 */} </View>
+<View style={br`w-10 h-10`} /> {/* 3 */} </View>
+```
+
+</CodeBlockHeader>
+
+
+## Flex
+
+Use `flex` to display the Component as flex (default behaviour).
+
+<CodeBlockHeader>
+
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-center justify-center mx-2 w-10 h-10 bg-gray-300">
+    1
+  </div>
+  <div className="flex items-center justify-center mx-2 w-10 h-10 bg-gray-300">
+    2
+  </div>
+  <div className="flex items-center justify-center mx-2 w-10 h-10 bg-gray-300">
+    3
+  </div>
+</div>
+
+```jsx simple
+<View style={br`flex w-10 h-10`}> {/* 1 */} </View>
+<View style={br`w-10 h-10`}> {/* 2 */} </View>
+<View style={br`w-10 h-10`} /> {/* 3 */} </View>
+```
+
+</CodeBlockHeader>
+
+
+<!-- prettier-ignore -->
+<Note>
+
+You don't need to specify flex on a component as is the default display for all Components, but you can use along with a variant to make a Component `flex` that is `hidden` by default.
+
+</Note>
+

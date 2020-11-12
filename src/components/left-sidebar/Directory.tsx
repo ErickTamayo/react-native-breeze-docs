@@ -7,12 +7,12 @@ export type DirectoryProps = {
 };
 
 const Directory: FunctionComponent<DirectoryProps> = ({ directory }) => {
-  const { name, children } = directory;
+  const { title, children } = directory;
 
   return (
-    <div className="px-2 mb-6">
-      <div className="px-4 capitalize mt-1 group w-full flex items-center pr-2 py-1  leading-5 font-medium rounded-md bg-white text-gray-600">
-        {name}
+    <div className="px-2 mb-3">
+      <div className="px-4 capitalize mt-1 group w-full flex items-center pr-2 py-1 leading-5 font-medium rounded-md bg-white text-gray-600">
+        {title}
       </div>
       <div className="py-2">
         {children.map((doc) => {

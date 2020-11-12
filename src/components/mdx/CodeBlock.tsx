@@ -1,6 +1,6 @@
 import { FunctionComponent, PropsWithChildren, useMemo } from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/oceanicNext";
+// import theme from "prism-react-renderer/themes/vsDark";
 
 export type CodeBlockProps = {
   simple?: boolean;
@@ -25,20 +25,22 @@ const CodeBlock: FunctionComponent<PropsWithChildren<CodeBlockProps>> = ({
       {...defaultProps}
       code={children as string}
       language={language}
-      theme={theme}
+      theme={theme as any}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <>
           {filename ? (
             <div
-              className="pl-4 py-3 rounded-t-lg text-gray-300 border-b border-gray-600"
-              style={{ backgroundColor: "#282c34" }}
+              className="mt-4 pl-4 py-3 rounded-t-lg text-gray-300 border-b border-gray-600"
+              style={{ backgroundColor: "rgb(41, 45, 62)" }}
             >
               {filename}
             </div>
-          ) : null}
+          ) : (
+            <div className="mt-4" />
+          )}
           <pre
-            className={`relative overflow-scroll text-wrap ${
+            className={`mb-4 relative overflow-scroll text-wrap ${
               filename ? "rounded-b-lg" : "rounded-lg"
             } ${simple ? "py-4 px-6" : ""}`}
             style={{ ...style }}
@@ -73,6 +75,122 @@ const CodeBlock: FunctionComponent<PropsWithChildren<CodeBlockProps>> = ({
       )}
     </Highlight>
   );
+};
+
+const theme = {
+  plain: {
+    color: "#bfc7d5",
+    backgroundColor: "#292d3e",
+    fontSize: "14px",
+  },
+  styles: [
+    {
+      types: ["comment"],
+      style: {
+        color: "rgb(105, 112, 152)",
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["string"],
+      style: {
+        color: "rgb(195, 232, 141)",
+      },
+    },
+    {
+      types: ["number"],
+      style: {
+        color: "rgb(247, 140, 108)",
+      },
+    },
+    {
+      types: ["builtin", "char", "constant", "function"],
+      style: {
+        color: "rgb(130, 170, 255)",
+      },
+    },
+    {
+      types: ["punctuation", "selector"],
+      style: {
+        color: "rgb(199, 146, 234)",
+      },
+    },
+    {
+      types: ["class-name"],
+      style: {
+        color: "#FF5572",
+      },
+    },
+    {
+      types: ["variable", "attr-name"],
+      style: {
+        color: "rgb(255, 203, 107)",
+      },
+    },
+    {
+      types: ["tag"],
+      style: {
+        color: "rgb(255, 85, 114)",
+      },
+    },
+    {
+      types: ["tag", "punctuation"],
+      style: {
+        color: "#89DDFF",
+      },
+    },
+
+    {
+      types: ["punctuation"],
+      style: {
+        color: "#D9F5DD",
+      },
+    },
+    {
+      types: ["tag", "script"],
+      style: {
+        color: "#82AAFF",
+      },
+    },
+    {
+      types: ["keyword"],
+      style: {
+        color: "#C792EA",
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["operator"],
+      style: {
+        color: "rgb(137, 221, 255)",
+      },
+    },
+    {
+      types: ["boolean"],
+      style: {
+        color: "rgb(255, 88, 116)",
+      },
+    },
+    {
+      types: ["doctype"],
+      style: {
+        color: "rgb(199, 146, 234)",
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["namespace"],
+      style: {
+        color: "rgb(178, 204, 214)",
+      },
+    },
+    {
+      types: ["url"],
+      style: {
+        color: "rgb(221, 221, 221)",
+      },
+    },
+  ],
 };
 
 export default CodeBlock;

@@ -75,7 +75,13 @@ export const getDocsTreeChildren = () => {
       };
     }
 
-    return { ...tree, expanded, position, children: childrenWithoutMeta };
+    return {
+      ...tree,
+      title: meta?.title || "",
+      expanded,
+      position,
+      children: childrenWithoutMeta,
+    };
   };
 
   const traversed = traverse(tree as MarkdownDirectoryTree);
