@@ -1,0 +1,178 @@
+---
+title: Align Items
+position: 1
+---
+
+import CodeBlockHeader from "../../src/components/code-block-header";
+
+# Align Items
+
+Utilities for controlling how children align in the cross axis.
+
+| Style          | Properties                     |
+| :------------- | :----------------------------- |
+| items-start    | `{ alignItems: 'flex-start' }` |
+| items-end      | `{ alignItems: 'flex-end' }`   |
+| items-center   | `{ alignItems: 'center' }`     |
+| items-stretch  | `{ alignItems: 'stretch' }`    |
+| items-baseline | `{ alignItems: 'baseline' }`   |
+
+## Start
+
+Use `items-start` to pack items from the start.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-start bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-start h-48 ...`}>
+  <View style={br`w-10 ...`}> {/* 1 */} </View>
+  <View style={br`w-10 ...`}> {/* 2 */} </View>
+  <View style={br`w-10 ...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## End
+
+Use `items-end` to pack items from the end.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-end bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-end h-48 ...`}>
+  <View style={br`w-10 ...`}> {/* 1 */} </View>
+  <View style={br`w-10 ...`}> {/* 2 */} </View>
+  <View style={br`w-10 ...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Center
+
+Use `items-center` to pack items around the center.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-center bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="w-10 flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-center h-48 ...`}>
+  <View style={br`w-10 ...`}> {/* 1 */} </View>
+  <View style={br`w-10 ...`}> {/* 2 */} </View>
+  <View style={br`w-10 ...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Stretch
+
+Use `items-stretch` to distribute the children evenly and stretch to fit the container.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-stretch bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-stretch h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Baseline
+
+Use `items-baseline` to align items along the container's cross axis such that all of their baselines align.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-baseline bg-gray-200 h-48 p-2 w-64 justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="text-2xl flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-baseline flex-row h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`text-2xl ...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
