@@ -1,0 +1,213 @@
+---
+title: Align Self
+position: 2
+---
+
+# Align Self
+
+| Style         | Properties                    |
+| :------------ | :---------------------------- |
+| self-auto     | `{ alignSelf: 'auto' }`       |
+| self-start    | `{ alignSelf: 'flex-start' }` |
+| self-end      | `{ alignSelf: 'flex-end' }`   |
+| self-center   | `{ alignSelf: 'center' }`     |
+| self-stretch  | `{ alignSelf: 'stretch' }`    |
+| self-baseline | `{ alignSelf: 'baseline' }`   |
+
+## Auto
+
+Use `self-auto` to align an item based on the value of the container's align items properties.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-stretch bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="self-auto flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-stretch h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`self-auto ...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Start
+
+Use `self-start` to align an item to the start of the container cross axis.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-stretch bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="self-start flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-stretch h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`self-start ...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## End
+
+Use `self-end` to align an item to the end of the container cross axis.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-stretch bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="self-end flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-stretch h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`self-end ...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Center
+
+Use `self-center` to align an item around the center of the container cross axis.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-stretch bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="self-center flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-stretch h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`self-center ...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Stretch
+
+Use `self-stretch` to stretch the item to fit the container.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-start bg-gray-200 h-48 p-2 w-64 flex-col justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div className="self-stretch flex items-center justify-center bg-gray-300 p-2 m-1">
+      2
+    </div>
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-start h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`self-stretch ...`}> {/* 2 */} </View>
+  <View style={br`...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+
+
+## Baseline
+
+Use `self-baseline` to align items along the container's cross axis such that all of their baselines align.
+
+<!-- prettier-ignore -->
+<CodeBlockHeader>
+
+<div className="flex items-center justify-center bg-gray-100 mt-4 text-gray-600 py-4 rounded-lg">
+  <div className="flex items-start bg-gray-200 h-48 p-2 w-64 justify-center">
+    <div className="flex items-center justify-center bg-gray-300 p-2 m-1">
+      1
+    </div>
+    <div
+      className="self-baseline text-2xl flex items-center justify-center bg-gray-300 p-2 m-1"
+      style={{ alignSelf: "baseline" }}
+    >
+      2
+    </div>
+    <div
+      className="self-baseline flex items-center justify-center bg-gray-300 p-2 m-1"
+      style={{ alignSelf: "baseline" }}
+    >
+      3
+    </div>
+  </div>
+</div>
+
+```jsx simple
+<View style={br`items-start flex-row h-48 ...`}>
+  <View style={br`...`}> {/* 1 */} </View>
+  <View style={br`self-baseline text-2xl ...`}> {/* 2 */} </View>
+  <View style={br`self-baseline ...`}> {/* 3 */} </View>
+</View>
+```
+
+</CodeBlockHeader>
+

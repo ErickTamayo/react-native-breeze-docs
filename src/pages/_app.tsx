@@ -15,6 +15,8 @@ import {
   Tr,
   Th,
   Td,
+  List,
+  ListItem,
 } from "../components/mdx";
 
 function MyApp({ Component, pageProps, router }) {
@@ -35,6 +37,8 @@ function MyApp({ Component, pageProps, router }) {
       tr: Tr,
       td: Td,
       th: Th,
+      ul: List,
+      li: ListItem,
     }),
     []
   );
